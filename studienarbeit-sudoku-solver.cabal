@@ -23,6 +23,7 @@ executable studienarbeit-sudoku-solver-exe
   main-is:             Main.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
+                     , text
                      , studienarbeit-sudoku-solver
   default-language:    Haskell2010
 
@@ -31,6 +32,7 @@ test-suite studienarbeit-sudoku-solver-test
   hs-source-dirs:      test
   main-is:             Spec.hs
   build-depends:       base
+                     , text
                      , studienarbeit-sudoku-solver
                      , hspec
                      , QuickCheck
