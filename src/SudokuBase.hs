@@ -24,16 +24,18 @@ type Choices  = [Value]
 boxsize = 3         :: Int
 values = ['1'..'9'] :: [Value]
 
--- list of sudoku rows
-rows :: Matrix a -> [Row a]
+rows :: Matrix a
+     -> [Row a]
 rows = id
 
--- list of sudoku columns
-cols :: Matrix a -> [Row a]
+-- | Create list of columns
+cols :: Matrix a -- ^ 2D 'Matrix' (usually 'Grid')
+     -> [Row a]  -- ^ list of rows (using 'transpose')
 cols = transpose
 
--- list of sudoku boxes (boxsize x boxsize)
-boxs :: Matrix a -> [Row a]
+-- | Create list of boxes ('boxsize' x 'boxsize')
+boxs :: Matrix a -- ^ 2D 'Matrix' (usually 'Grid')
+     -> [Row a]  -- ^ list of boxes (sectors in a sudoku grid)
 boxs = unpack . map cols . pack
     where pack   = split . map split
           split  = chop boxsize
