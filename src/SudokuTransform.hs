@@ -1,10 +1,11 @@
-module SudokuTransforms
+module SudokuTransform
     ( choices
     , collapse
     , prune ) where
 
 import SudokuBase
 import SudokuAnalize ( single, empty )
+import Data.List     ( (\\) )
 
 -- either set single value or all values as array
 choices :: Grid -> Matrix Choices

@@ -2,10 +2,14 @@ module Attempt4 ( solve ) where
 
 import SudokuBase ( Grid, Matrix, Choices )
 import SudokuAnalize ( blocked, complete, single )
-import SudokuTransforms ( collapse, prune, choices )
+import SudokuTransform ( collapse, prune, choices )
 
 solve :: Grid -> [Grid]
 solve = search . prune . choices
+
+--------------------------------------------------------
+--------------------- Helper Funcs ---------------------
+--------------------------------------------------------
 
 -- only search if not blocked or not complete
 search :: Matrix Choices -> [Grid]

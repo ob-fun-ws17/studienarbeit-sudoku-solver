@@ -2,10 +2,14 @@ module Attempt3 ( solve ) where
 
 import SudokuBase ( Grid )
 import SudokuAnalize ( valid )
-import SudokuTransforms ( collapse, prune, choices )
+import SudokuTransform ( collapse, prune, choices )
 
 solve :: Grid -> [Grid]
 solve = filter valid . collapse . fix prune . choices
+
+--------------------------------------------------------
+--------------------- Helper Funcs ---------------------
+--------------------------------------------------------
 
 -- map recursive until result doesn't change anymore
 fix :: Eq a => (a -> a) -> a -> a

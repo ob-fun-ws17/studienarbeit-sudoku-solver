@@ -2,7 +2,7 @@ name:                studienarbeit-sudoku-solver
 version:             0.1.0.0
 synopsis:            Algorithm to solve sudoku puzzles.
 homepage:            https://github.com/ob-fun-ws17/studienarbeit-sudoku-solver
-license:             GPLv3
+license:             GPL-3
 license-file:        LICENSE
 author:              Robin Wismeth
 maintainer:          rwismeth@hm.edu
@@ -14,7 +14,11 @@ description:         Please see the README on Github at <https://github.com/ob-f
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib
+  exposed-modules:     SudokuBase
+                     , SudokuAnalize
+                     , SudokuTransform
+                     , SudokuParser
+                     , SudokuSolver
   build-depends:       base >= 4.7 && < 5
   default-language:    Haskell2010
 
@@ -23,7 +27,6 @@ executable studienarbeit-sudoku-solver-exe
   main-is:             Main.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
-                     , text
                      , studienarbeit-sudoku-solver
   default-language:    Haskell2010
 
@@ -32,7 +35,6 @@ test-suite studienarbeit-sudoku-solver-test
   hs-source-dirs:      test
   main-is:             Spec.hs
   build-depends:       base
-                     , text
                      , studienarbeit-sudoku-solver
                      , hspec
                      , QuickCheck

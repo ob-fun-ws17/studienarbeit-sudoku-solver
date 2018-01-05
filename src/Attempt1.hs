@@ -2,7 +2,7 @@ module Attempt1 ( solve ) where
 
 import SudokuBase ( Grid )
 import SudokuAnalize ( valid )
-import SudokuTransforms ( collapse, choices )
+import SudokuTransform ( collapse, choices )
 
 solve :: Grid -> [Grid]
 solve = filter valid . collapse . choices

@@ -11,7 +11,7 @@ module SudokuBase
     , boxsize
     ) where
 
--- import Data.List
+import Data.List ( transpose )
 
 -- Basic Types
 type Value    = Char
@@ -21,7 +21,7 @@ type Grid     = Matrix Value
 type Choices  = [Value]
 
 -- Constants
-boxsize = 9         :: Int
+boxsize = 3         :: Int
 values = ['1'..'9'] :: [Value]
 
 -- list of sudoku rows
