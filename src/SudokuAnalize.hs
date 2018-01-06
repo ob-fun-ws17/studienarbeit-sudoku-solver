@@ -7,27 +7,32 @@ module SudokuAnalize
 
 import SudokuBase
 
--- Check if sudoku field is empty
-empty :: Value -> Bool
+-- | Check if sudoku field is empty
+empty :: Value -- ^ 'Value' of a field
+      -> Bool  -- ^ 'True' if no concrete value
 empty = (== '.')
 
--- Check if an array contains only ONE component
-single :: [a] -> Bool
+-- | Check if an array contains only ONE component
+single :: [a]  -- ^ usually 'SudokuBase#Choices'
+       -> Bool -- ^ 'True' if it only contains one choice
 single [_] = True
 single _ = False
 
--- check if sudoku grid is valid
-valid :: Grid -> Bool
+-- | Check if sudoku grid is valid
+valid :: Grid -- ^ Sudoku grid that doesn't have to be valid
+      -> Bool -- ^ 'True' if no dublicate entries in each row, column and box
 valid g = all nodups (rows g) &&
           all nodups (cols g) &&
           all nodups (boxs g)
 
--- A Matrix is complete if it only contains single choices
-complete :: Matrix Choices -> Bool
+-- | A Matrix is complete if it only contains single choices
+complete :: Matrix Choices -- ^ representing a possibly unsolved sudoku grid
+         -> Bool           -- ^ 'True' if every field has a 'single' choice
 complete = all (all single)
 
--- either void or unsafe
-blocked :: Matrix Choices -> Bool
+-- | Either void or unsafe
+blocked :: Matrix Choices -- ^ a possibly unsolvable sudoku grid
+        -> Bool           -- ^ 'True' if not solvable
 blocked m = void m || not (save m)
 
 --------------------------------------------------------

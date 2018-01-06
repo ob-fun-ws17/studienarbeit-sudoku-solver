@@ -1,6 +1,6 @@
 # studienarbeit-sudoku-solver ![Travis build status](https://travis-ci.org/ob-fun-ws17/studienarbeit-sudoku-solver.svg?branch=master)
 
-This programm reads a specified file (using this format) and evaluates the containing
+This programm reads a specified file (using [this format](#format)) and evaluates the containing
 sudoku grid. After successfull evaluation, the solution will be printed on __stdout__.
 
 
@@ -13,7 +13,7 @@ To run the programm you can use ```stack exec studienarbeit-sudoku-solver path/t
 
 ---
 
-#### File format
+#### <a name="format"></a>File format
 Sudoku files must have the following format:
 * Each line represents a row in the sudoku grid
 * A line contains characters __'1' to '9' or '.'__ if the value is unknown
@@ -52,10 +52,3 @@ Sudoku files must have the following format:
 
 ### Test
 For performance tests simply run ```stack test```
-
----
-
-## TODO's
-*   The actual algorithm is well optimized. It is however not realy memory efficient
-    *(the next step would be, to cleverly use monads and reuse memory)*
-*   GUI *(always a good idea)*
