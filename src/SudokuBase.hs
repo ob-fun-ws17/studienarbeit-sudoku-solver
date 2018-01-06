@@ -1,3 +1,6 @@
+{-
+Basic types and functions needed to represent a sudoku grid
+-}
 module SudokuBase
     ( -- * Types used to represent both solved and unsolved sudoku grids
       Value
@@ -51,6 +54,8 @@ boxs = unpack . map cols . pack
 --------------------------------------------------------
 
 -- helper func for boxs
-chop :: Int -> [a] -> [[a]]
+chop :: Int
+     -> [a]
+     -> [[a]]
 chop n [] = []
 chop n xs = take n xs : chop n (drop n xs)

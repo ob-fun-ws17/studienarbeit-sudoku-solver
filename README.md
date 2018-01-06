@@ -9,7 +9,7 @@ sudoku grid. After successfull evaluation, the solution will be printed on __std
 ---
 
 ### Execute
-To run the programm you can use ```stack exec studienarbeit-sudoku-solver path/to/sudoku_file```
+To run the programm you can use ```stack exec studienarbeit-sudoku-solver path/to/sudoku_file```. You can find some sample files in the __resources__ directory.
 
 ---
 

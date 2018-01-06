@@ -1,3 +1,7 @@
+{-
+Collection of functions that check specific properties
+of a sudoku grid or its' subcomponents
+-}
 module SudokuAnalize
     ( empty
     , single
@@ -40,20 +44,24 @@ blocked m = void m || not (save m)
 --------------------------------------------------------
 
 -- Void = unsolvable (Matrix contains field with no choices)
-void :: Matrix Choices -> Bool
+void :: Matrix Choices
+     -> Bool
 void = any (any null)
 
 -- helper func for valid
-nodups :: Eq a => [a] -> Bool
+nodups :: Eq a => [a]
+       -> Bool
 nodups [] = True
 nodups (x:xs) = not (x `elem` xs) && nodups xs
 
 -- No interfearing single choices
-save :: Matrix Choices -> Bool
+save :: Matrix Choices
+     -> Bool
 save cm = all consistent (rows cm) &&
           all consistent (cols cm) &&
           all consistent (boxs cm)
 
 -- helper func of save
-consistent :: Row Choices -> Bool
+consistent :: Row Choices
+           -> Bool
 consistent = nodups . concat . filter single

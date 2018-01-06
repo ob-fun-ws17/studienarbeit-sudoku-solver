@@ -1,3 +1,6 @@
+{-
+Functions to read and write sudoku grids
+-}
 module SudokuParser ( parseFile, showGrid ) where
 
 import SudokuBase ( boxsize
@@ -13,15 +16,18 @@ import System.IO  ( openFile
                   , Handle
                   , IOMode( ReadMode ) )
 
-
-parseFile :: FilePath -> IO Grid
+-- | Extract 'Grid' from specified file (see /README.md/ for a file format description)
+parseFile :: FilePath -- ^ File containing a valid sudoku grid
+          -> IO Grid  -- ^ Extracted sudoku grid
 parseFile f = do
     handle <- openFile f ReadMode
     grid <- getlines handle
     hClose handle
     return grid
 
-showGrid :: Grid -> String
+-- | Creates human readable string representaion of a 'Grid'
+showGrid :: Grid   -- ^ 'Grid' to make readable
+         -> String -- ^ 'String' containing table layout of 'Grid'
 showGrid g = showRows g
     where showRows rs = padd rs "\n" showCols
           showCols cs = padd cs " " (:[])
@@ -29,11 +35,18 @@ showGrid g = showRows g
 --------------------------------------------------------
 --------------------- Helper Funcs ---------------------
 --------------------------------------------------------
-padd :: [a] -> String -> (a -> String) -> String
+
+-- Insert a splecified string between each string-mapped array element
+padd :: [a]
+     -> String
+     -> (a -> String)
+     -> String
 padd (r:rs) p f = (f r) ++ p ++ (padd rs p f)
 padd [] _ _  = []
 
-getlines :: Handle -> IO Grid
+-- Extract grid from a specified file handle
+getlines :: Handle
+         -> IO Grid
 getlines h = do
     isend <- hIsEOF h
     if isend
