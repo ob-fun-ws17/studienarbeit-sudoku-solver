@@ -1,4 +1,4 @@
-{-
+{-|
 Functions to read and write sudoku grids
 -}
 module SudokuParser ( parseFile, showGrid ) where

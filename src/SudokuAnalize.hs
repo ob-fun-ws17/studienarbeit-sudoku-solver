@@ -1,4 +1,4 @@
-{-
+{-|
 Collection of functions that check specific properties
 of a sudoku grid or its' subcomponents
 -}

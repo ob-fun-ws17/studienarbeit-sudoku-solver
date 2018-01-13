@@ -1,4 +1,4 @@
-{-
+{-|
 Basic types and functions needed to represent a sudoku grid
 -}
 module SudokuBase
