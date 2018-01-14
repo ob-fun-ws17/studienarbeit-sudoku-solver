@@ -51,4 +51,9 @@ Sudoku files must have the following format:
 ---
 
 ### Test
-For performance tests simply run ```stack test```
+For unit tests simply run ```stack test```
+
+---
+
+### Benchmarks
+Run ```stack bench``` to evaluate performance of the 2 fastest implementations

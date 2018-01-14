@@ -1,10 +1,20 @@
+{-|
+This module contains the toplevel function
+to solve sudoku grids as well as its' sub functions.
+
+This implementation is deprecated (faster implementation can be found in 'SudokuSolver.solve')
+and is only included for historical purpose.
+-}
 module Attempt4 ( solve ) where
 
 import SudokuBase ( Grid, Matrix, Choices )
 import SudokuAnalize ( blocked, complete, single )
 import SudokuTransform ( collapse, prune, choices )
 
-solve :: Grid -> [Grid]
+
+-- | Tries to find a solution to a specified 'Grid'
+solve :: Grid   -- ^ (unsolved) 'Grid' as input
+      -> [Grid] -- ^ list whicht eigher contains a solution or is empty
 solve = search . prune . choices
 
 --------------------------------------------------------

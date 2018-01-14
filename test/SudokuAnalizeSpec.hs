@@ -1,8 +1,13 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 module SudokuAnalizeSpec ( spec ) where
 
-import Samples         ( sampleGrid, sampleChoicesPruned, sampleGridSolved )
-import SudokuBase      ( Value, values )
+import Samples         ( sampleGrid
+                       , sampleChoicesPruned
+                       , sampleGridSolved
+                       , sampleChoicesInvalid
+                       , sampleChoicesInconsistent )
+import SudokuBase      ( Value
+                       , values )
 import SudokuTransform ( choices )
 import SudokuAnalize
 import Test.Hspec
@@ -28,5 +33,10 @@ spec = describe "Exported functions" $ do
             complete (choices sampleGridSolved) `shouldBe` True
         it "test on unsolved sample" $
             complete sampleChoicesPruned `shouldBe` False
---    describe "blocked" $ do
---        it ""
+    describe "blocked" $ do
+        it "test on valid sample" $
+            blocked sampleChoicesPruned `shouldBe` False
+        it "test on invalid sample" $
+            blocked sampleChoicesInvalid `shouldBe` True
+        it "test on inconsistent sample" $
+            blocked sampleChoicesInconsistent `shouldBe` True
